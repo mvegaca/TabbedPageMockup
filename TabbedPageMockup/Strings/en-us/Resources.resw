@@ -125,7 +125,7 @@
     <value>TabbedPageMockup</value>
     <comment>Application description</comment>
   </data>
-  <data name="Shell_Tabbed1.Content" xml:space="preserve">
+  <data name="Shell_Tabbed.Content" xml:space="preserve">
     <value>Tabbed</value>
     <comment>Navigation view item name for Tabbed</comment>
   </data>
@@ -188,5 +188,8 @@
   <data name="ExceptionEnumToBooleanConverterParameterMustBeAnEnumName" xml:space="preserve">
     <value>parameter must be an Enum name!</value>
     <comment>Parameter must be an Enum name in enum to boolean converter</comment>
+  </data>
+  <data name="Shell_Tabbed2.Content" xml:space="preserve">
+    <value>Tabbed 2</value>
   </data>
 </root>

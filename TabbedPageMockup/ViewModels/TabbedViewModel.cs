@@ -1,21 +1,40 @@
 ﻿using System.Collections.ObjectModel;
 using System.Linq;
 using TabbedPageMockup.Helpers;
-using TabbedPageMockup.Core.Models;
+using WinUI = Microsoft.UI.Xaml.Controls;
 
 namespace TabbedPageMockup.ViewModels
 {
     public class TabbedViewModel : Observable
     {
         private RelayCommand _addTabCommand;
+        private RelayCommand<WinUI.TabViewTabCloseRequestedEventArgs> _closeTabCommand;
 
         public RelayCommand AddTabCommand => _addTabCommand ?? (_addTabCommand = new RelayCommand(AddTab));
 
-        public ObservableCollection<SampleTabbedItem> Tabs { get; } = new ObservableCollection<SampleTabbedItem>()
+        public RelayCommand<WinUI.TabViewTabCloseRequestedEventArgs> CloseTabCommand => _closeTabCommand ?? (_closeTabCommand = new RelayCommand<WinUI.TabViewTabCloseRequestedEventArgs>(CloseTab));
+
+        public ObservableCollection<TabViewItemData> Tabs { get; } = new ObservableCollection<TabViewItemData>()
         {
-            new SampleTabbedItem(1, "Item 1", "This is the Item 1 content."),
-            new SampleTabbedItem(2, "Item 2", "This is the Item 2 content."),
-            new SampleTabbedItem(3, "Item 3", "This is the Item 3 content.")
+            new TabViewItemData()
+            {
+                Index = 1,
+                Header = "Item 1",
+                // In this sample the content shown in the Tab is a string, set the content to the model you want to show
+                Content = "This is the content for Item 1."
+            },
+            new TabViewItemData()
+            {
+                Index = 2,
+                Header = "Item 2",
+                Content = "This is the content for Item 2."
+            },
+            new TabViewItemData()
+            {
+                Index = 3,
+                Header = "Item 3",
+                Content = "This is the content for Item 3."
+            }
         };
 
         public TabbedViewModel()
@@ -25,7 +44,20 @@ namespace TabbedPageMockup.ViewModels
         private void AddTab()
         {
             int newIndex = Tabs.Any() ? Tabs.Max(t => t.Index) + 1 : 1;
-            Tabs.Add(new SampleTabbedItem(newIndex, $"Item {newIndex}", $"This is the Item {newIndex} content."));
+            Tabs.Add(new TabViewItemData()
+            {
+                Index = newIndex,
+                Header = $"Item {newIndex}",
+                Content = $"This is the content for Item {newIndex}"
+            });
+        }
+
+        private void CloseTab(WinUI.TabViewTabCloseRequestedEventArgs args)
+        {
+            if (args.Item is TabViewItemData item)
+            {
+                Tabs.Remove(item);
+            }
         }
     }
 }

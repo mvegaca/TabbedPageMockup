@@ -8,13 +8,13 @@
 
         public string Header { get; set; }
 
-        public string Content { get; set; }
+        public string Description { get; set; }
 
-        public SampleTabbedItem(int index, string header, string content)
+        public SampleTabbedItem(int index, string header, string description)
         {
             Index = index;
             Header = header;
-            Content = content;
+            Description = description;
         }
     }
 }
