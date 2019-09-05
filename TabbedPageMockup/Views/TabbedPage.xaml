@@ -5,7 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"    
     xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
-    xmlns:models="using:TabbedPageMockup.Models"
+    xmlns:models="using:TabbedPageMockup.Core.Models"
     Style="{StaticResource PageStyle}"
     mc:Ignorable="d">
     <Grid x:Name="ContentArea">
@@ -13,9 +13,6 @@
             TabWidthBehavior="Actual"
             CanCloseTabs="True"
             IsCloseButtonOverlay="False"
-            CanDragItems="True"
-            CanReorderItems="True"
-            AllowDrop="False"
             SelectedTabWidth="200"
             ItemsSource="{x:Bind ViewModel.Tabs}">
             <controls:TabView.Resources>
@@ -40,13 +37,13 @@
             </controls:TabView.TabActionHeader>
 
             <controls:TabView.ItemHeaderTemplate>
-                <DataTemplate x:DataType="models:TabbedItem">
+                <DataTemplate x:DataType="models:SampleTabbedItem">
                     <TextBlock Text="{x:Bind Header}" />
                 </DataTemplate>
             </controls:TabView.ItemHeaderTemplate>
 
             <controls:TabView.ItemTemplate>
-                <DataTemplate x:DataType="models:TabbedItem">
+                <DataTemplate x:DataType="models:SampleTabbedItem">
                     <Grid Margin="{StaticResource SmallLeftTopRightBottomMargin}">
                         <TextBlock Text="{x:Bind Content}" />
                     </Grid>

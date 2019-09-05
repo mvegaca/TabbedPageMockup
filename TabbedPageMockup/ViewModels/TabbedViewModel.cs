@@ -1,7 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.Linq;
 using TabbedPageMockup.Helpers;
-using TabbedPageMockup.Models;
+using TabbedPageMockup.Core.Models;
 
 namespace TabbedPageMockup.ViewModels
 {
@@ -11,11 +11,11 @@ namespace TabbedPageMockup.ViewModels
 
         public RelayCommand AddTabCommand => _addTabCommand ?? (_addTabCommand = new RelayCommand(AddTab));
 
-        public ObservableCollection<TabbedItem> Tabs { get; } = new ObservableCollection<TabbedItem>()
+        public ObservableCollection<SampleTabbedItem> Tabs { get; } = new ObservableCollection<SampleTabbedItem>()
         {
-            new TabbedItem(1, "Item 1", "This is the Item 1 content."),
-            new TabbedItem(2, "Item 2", "This is the Item 2 content."),
-            new TabbedItem(3, "Item 3", "This is the Item 3 content.")
+            new SampleTabbedItem(1, "Item 1", "This is the Item 1 content."),
+            new SampleTabbedItem(2, "Item 2", "This is the Item 2 content."),
+            new SampleTabbedItem(3, "Item 3", "This is the Item 3 content.")
         };
 
         public TabbedViewModel()
@@ -24,8 +24,8 @@ namespace TabbedPageMockup.ViewModels
 
         private void AddTab()
         {
-            int newIndex = Tabs.Max(t => t.Index) + 1;
-            Tabs.Add(new TabbedItem(newIndex, $"Item {newIndex}", $"This is the Item {newIndex} content."));
+            int newIndex = Tabs.Any() ? Tabs.Max(t => t.Index) + 1 : 1;
+            Tabs.Add(new SampleTabbedItem(newIndex, $"Item {newIndex}", $"This is the Item {newIndex} content."));
         }
     }
 }
