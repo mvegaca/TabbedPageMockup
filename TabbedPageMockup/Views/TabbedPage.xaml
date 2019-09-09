@@ -5,7 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:winui="using:Microsoft.UI.Xaml.Controls"
-    xmlns:helpers="using:TabbedPageMockup.Helpers"
+    xmlns:models="using:TabbedPageMockup.Models"
     xmlns:i="using:Microsoft.Xaml.Interactivity"
     xmlns:ic="using:Microsoft.Xaml.Interactions.Core"
     xmlns:system="using:System"
@@ -13,19 +13,18 @@
     mc:Ignorable="d">
     <Grid x:Name="ContentArea">
         <winui:TabView
-            TabItemsSource="{x:Bind ViewModel.Tabs}">
+            TabItemsSource="{x:Bind ViewModel.Tabs}"
+            AddTabButtonCommand="{x:Bind ViewModel.AddTabCommand}">
             <i:Interaction.Behaviors>
-                <ic:EventTriggerBehavior EventName="AddTabButtonClick">
-                    <ic:InvokeCommandAction Command="{x:Bind ViewModel.AddTabCommand}" />
-                </ic:EventTriggerBehavior>
                 <ic:EventTriggerBehavior EventName="TabCloseRequested">
                     <ic:InvokeCommandAction Command="{x:Bind ViewModel.CloseTabCommand}" />
                 </ic:EventTriggerBehavior>
             </i:Interaction.Behaviors>
             <winui:TabView.TabItemTemplate>
-                <DataTemplate x:DataType="helpers:TabViewItemData">
+                <DataTemplate x:DataType="models:TabViewItemData">
                     <winui:TabViewItem
                         Header="{x:Bind Header}"
+                        AutomationProperties.Name="{x:Bind Header}"
                         Content="{x:Bind Content}">
                         <winui:TabViewItem.ContentTemplate>
                             <DataTemplate x:DataType="system:String">

@@ -1,4 +1,4 @@
-﻿namespace TabbedPageMockup.Helpers
+﻿namespace TabbedPageMockup.Models
 {
     public class TabViewItemData
     {
