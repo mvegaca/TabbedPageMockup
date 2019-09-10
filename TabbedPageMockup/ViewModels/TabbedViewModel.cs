@@ -20,21 +20,21 @@ namespace TabbedPageMockup.ViewModels
             new TabViewItemData()
             {
                 Index = 1,
-                Header = "Item Martin 1",
+                Header = "Item 1",
                 // In this sample the content shown in the Tab is a string, set the content to the model you want to show
-                Content = "This is the content Sibille for Item 1."
+                Content = "This is the content for Item 1."
             },
             new TabViewItemData()
             {
                 Index = 2,
-                Header = "Item Martin 2",
-                Content = "This is the content Sibille for Item 2."
+                Header = "Item 2",
+                Content = "This is the content for Item 2."
             },
             new TabViewItemData()
             {
                 Index = 3,
-                Header = "Item Martin 3",
-                Content = "This is the content Sibille for Item 3."
+                Header = "Item 3",
+                Content = "This is the content for Item 3."
             }
         };
 
@@ -48,8 +48,8 @@ namespace TabbedPageMockup.ViewModels
             Tabs.Add(new TabViewItemData()
             {
                 Index = newIndex,
-                Header = $"Item Martin {newIndex}",
-                Content = $"This is the content Sibille for Item {newIndex}"
+                Header = $"Item {newIndex}",
+                Content = $"This is the content for Item {newIndex}"
             });
         }
 
