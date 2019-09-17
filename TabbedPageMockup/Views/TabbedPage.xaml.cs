@@ -1,6 +1,4 @@
-﻿using System;
-
-using TabbedPageMockup.ViewModels;
+﻿using TabbedPageMockup.ViewModels;
 
 using Windows.UI.Xaml.Controls;
 
